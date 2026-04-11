@@ -3,165 +3,174 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>VibeLingo | Local Storage Edition</title>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;500;700&display=swap" rel="stylesheet">
-    
+    <title>multi-learner | cn.th.en</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap" rel="stylesheet">
     <style>
         :root {
-            --bg-gradient: linear-gradient(135deg, #0f0c29, #302b63, #24243e);
-            --accent-pink: #ff0080;
-            --accent-blue: #00d2ff;
-            --glass-bg: rgba(255, 255, 255, 0.05);
-            --glass-border: rgba(255, 255, 255, 0.1);
+            --bg-gradient: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%);
+            --accent-purple: #4831d4;
+            --accent-pink: #ffafbd;
+            --text-white: #ffffff;
+            --text-dim: #b0b0b0;
+            --brand-yellow: #ffcc00;
         }
 
-        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Inter', sans-serif; }
-
-        body {
+        body, html {
+            margin: 0;
+            padding: 0;
+            font-family: 'Inter', sans-serif;
             background: var(--bg-gradient);
             background-attachment: fixed;
+            color: var(--text-white);
             min-height: 100vh;
             display: flex;
             flex-direction: column;
-            justify-content: center;
             align-items: center;
-            color: white;
-            padding: 20px;
         }
 
-        .glow {
-            position: absolute;
-            width: 400px;
-            height: 400px;
-            background: var(--accent-pink);
-            filter: blur(150px);
-            border-radius: 50%;
-            z-index: -1;
-            opacity: 0.2;
-        }
-
-        /* Main Card */
-        .card {
-            background: var(--glass-bg);
-            backdrop-filter: blur(20px);
-            border: 1px solid var(--glass-border);
-            border-radius: 24px;
-            padding: 3rem;
-            width: 100%;
-            max-width: 500px;
+        .container {
+            max-width: 800px;
+            width: 90%;
+            padding: 60px 20px;
             text-align: center;
-            box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
         }
 
-        .label { text-transform: uppercase; letter-spacing: 2px; font-size: 0.7rem; color: var(--accent-blue); font-weight: 700; margin-bottom: 1rem; display: block; }
-        h1 { font-size: 3rem; margin-bottom: 0.5rem; background: linear-gradient(to right, #fff, var(--accent-pink)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
-        .pinyin { font-size: 1.1rem; color: rgba(255, 255, 255, 0.5); margin-bottom: 1.5rem; }
-        .meaning { font-size: 1.3rem; font-weight: 300; }
-
-        /* Teacher Mode - Input Area */
-        .admin-panel {
-            margin-top: 2rem;
-            background: rgba(0, 0, 0, 0.2);
-            padding: 1.5rem;
-            border-radius: 15px;
-            width: 100%;
-            max-width: 500px;
+        /* Logo Styling */
+        .logo-container {
+            margin-bottom: 40px;
+        }
+        
+        .logo-icon {
+            font-size: 60px;
+            margin-bottom: 10px;
+            display: inline-block;
         }
 
-        input {
-            width: 100%;
-            padding: 10px;
-            margin: 5px 0;
-            background: rgba(255, 255, 255, 0.1);
-            border: 1px solid var(--glass-border);
-            border-radius: 8px;
-            color: white;
+        h1 {
+            font-size: 2.5rem;
+            margin: 0;
+            color: var(--brand-yellow);
+            letter-spacing: -1px;
         }
 
-        .btn {
-            margin-top: 1rem;
-            background: transparent;
-            border: 1px solid var(--accent-pink);
-            color: white;
-            padding: 10px 20px;
+        .subtitle {
+            font-size: 1.2rem;
+            color: var(--text-white);
+            opacity: 0.9;
+            margin-top: 5px;
+            font-weight: bold;
+        }
+
+        /* Introduction Section */
+        .intro-box {
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            padding: 30px;
+            border-radius: 20px;
+            margin: 40px 0;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+        }
+
+        p {
+            line-height: 1.8;
+            font-size: 1.1rem;
+            color: var(--text-dim);
+        }
+
+        .highlight {
+            color: var(--accent-pink);
+            font-weight: bold;
+        }
+
+        /* Call to Action */
+        .cta-button {
+            display: inline-block;
+            background: var(--accent-pink);
+            color: #1a1a2e;
+            padding: 15px 40px;
             border-radius: 50px;
-            cursor: pointer;
-            width: 100%;
-            transition: 0.3s;
+            text-decoration: none;
+            font-weight: bold;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            margin-top: 20px;
         }
 
-        .btn:hover { background: var(--accent-pink); }
-        .secondary-btn { border-color: var(--accent-blue); margin-top: 10px; }
-        .secondary-btn:hover { background: var(--accent-blue); }
+        .cta-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 5px 20px rgba(255, 175, 189, 0.4);
+        }
+
+        /* Language Badges */
+        .badges {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin-top: 20px;
+        }
+
+        .badge {
+            background: rgba(72, 49, 212, 0.3);
+            border: 1px solid var(--accent-purple);
+            padding: 5px 15px;
+            border-radius: 5px;
+            font-size: 0.9rem;
+            text-transform: uppercase;
+        }
+
+        footer {
+            margin-top: auto;
+            padding: 40px;
+            font-size: 0.8rem;
+            color: var(--text-dim);
+        }
+
     </style>
 </head>
 <body>
 
-    <div class="glow"></div>
+    <div class="container">
+        <div class="logo-container">
+            <div class="logo-icon">📖</div> <h1>multi-learner.</h1>
+            <div class="subtitle">cn.th.en</div>
+        </div>
 
-    <main class="card" id="display-card">
-        <span class="label">Vocabulary Flashcard</span>
-        <h1 id="word-display">Add a word!</h1>
-        <p class="pinyin" id="phonetic-display">---</p>
-        <p class="meaning" id="definition-display">Use the form below to start your list.</p>
-        <button class="btn secondary-btn" onclick="showRandomWord()">Next Random Word</button>
-    </main>
+        <div class="badges">
+            <span class="badge">Chinese</span>
+            <span class="badge">Thai</span>
+            <span class="badge">English</span>
+        </div>
 
-    <section class="admin-panel">
-        <span class="label" style="color: var(--accent-pink)">Designer/Teacher Tools</span>
-        <input type="text" id="input-word" placeholder="Word (e.g. 学习)">
-        <input type="text" id="input-phonetic" placeholder="Phonetic/Pinyin (e.g. xué xí)">
-        <input type="text" id="input-meaning" placeholder="Meaning (e.g. To learn)">
-        <button class="btn" onclick="saveWord()">Add to My List</button>
-        <button class="btn" style="border-color: grey; font-size: 10px;" onclick="clearList()">Clear All Data</button>
-    </section>
+        <div class="intro-box">
+            <p>
+                Welcome! I am a language enthusiast currently navigating the bridge between 
+                <span class="highlight">upper-intermediate and advanced</span> mastery. 
+                I believe that you don't need to be a "perfect" native speaker to start sharing knowledge—you just need the courage to try.
+            </p>
+            <p>
+                This space documents my journey from a personal vlog to a 
+                <span class="highlight">full-scale language school</span>. I focus on situational, 
+                everyday vocabulary that moves beyond the textbooks.
+            </p>
+            
+            <a href="#" class="cta-button">Subscribe to my Journey</a>
+        </div>
+
+        <p style="font-style: italic; font-size: 0.9rem;">
+            "Be brave about showing your face, no matter what others say."
+        </p>
+    </div>
+
+    <footer>
+        &copy; 2026 multi-learner | Built for the global learner.
+    </footer>
 
     <script>
-        // 1. Get the list from Local Storage (or start empty)
-        let vocabList = JSON.parse(localStorage.getItem('myVocab')) || [];
-
-        function saveWord() {
-            const word = document.getElementById('input-word').value;
-            const phonetic = document.getElementById('input-phonetic').value;
-            const meaning = document.getElementById('input-meaning').value;
-
-            if(word && meaning) {
-                const newEntry = { word, phonetic, meaning };
-                vocabList.push(newEntry);
-                
-                // 2. Save to browser memory
-                localStorage.setItem('myVocab', JSON.stringify(vocabList));
-                
-                // Clear inputs
-                document.getElementById('input-word').value = '';
-                document.getElementById('input-phonetic').value = '';
-                document.getElementById('input-meaning').value = '';
-                
-                alert("Word saved locally!");
-                showRandomWord();
-            }
-        }
-
-        function showRandomWord() {
-            if (vocabList.length === 0) return;
-            
-            const randomIndex = Math.floor(Math.random() * vocabList.length);
-            const item = vocabList[randomIndex];
-
-            document.getElementById('word-display').innerText = item.word;
-            document.getElementById('phonetic-display').innerText = item.phonetic;
-            document.getElementById('definition-display').innerText = item.meaning;
-        }
-
-        function clearList() {
-            if(confirm("Delete all saved words?")) {
-                localStorage.removeItem('myVocab');
-                location.reload();
-            }
-        }
-
-        // Show a word immediately if list isn't empty
-        if(vocabList.length > 0) showRandomWord();
+        // Future Logic: This is where you can connect your 
+        // Google Sheets Apps Script API later!
+        console.log("Multi-learner site initialized.");
     </script>
 </body>
 </html>
