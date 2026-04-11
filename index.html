@@ -3,191 +3,344 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>multi-learner | Language School</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
+    <title>The Multi-Learner | Royal Blue & Gold Roadmap</title>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=Public+Sans:wght@300;400;600;700&display=swap" rel="stylesheet">
     <style>
+        /* --- CSS STYLES --- */
         :root {
-            /* Brand Colors */
-            --royal-blue: #3b42ae; /* Matches the logo background */
-            --dark-blue: #2a2f8a;
-            --gold: #ffcc00;       /* Matches the "multi-learner" text */
-            --white: #ffffff;
-            --soft-pink: #ffafbd;  /* Keeping your preferred accent for subtle glows */
+            --bg: #ffffff; /* Pure White */
+            --text: #1a1a1a;
+            
+            /* Core Theme Colors */
+            --royal-blue: #0047AB; /* Deep Royal Blue */
+            --gold: #C5A059;       /* Muted Gold */
+            --gold-light: #E5C78D; /* Lighter Gold for backgrounds */
+            
+            /* Color Mapping for Design Preservation */
+            --accent: var(--royal-blue); /* Editorial accent is now Royal Blue */
+            --cn: var(--royal-blue);     /* All languages unify under Royal Blue */
+            --th: var(--royal-blue);
+            --en: var(--royal-blue);
+            
+            --serif: 'DM Serif Display', serif;
+            --sans: 'Public Sans', sans-serif;
         }
 
-        body, html {
-            margin: 0;
-            padding: 0;
-            font-family: 'Inter', sans-serif;
-            background: linear-gradient(180deg, var(--royal-blue) 0%, var(--dark-blue) 100%);
-            background-attachment: fixed;
-            color: var(--white);
-            min-height: 100vh;
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        
+        body {
+            font-family: var(--sans);
+            background-color: var(--bg);
+            color: var(--text);
+            line-height: 1.7;
+        }
+
+        a { text-decoration: none; color: inherit; transition: 0.3s; }
+        a:hover { color: var(--gold); } /* Gold on hover */
+
+        /* Magazine Header */
+        header.magazine-nav {
+            padding: 30px 5%;
+            border-bottom: 2px solid #eee;
+            background: #fff;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .header-top {
             display: flex;
-            flex-direction: column;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+
+        .logo-magazine { height: 45px; }
+
+        .header-links {
+            display: flex;
+            gap: 30px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            font-size: 0.85rem;
+            color: var(--royal-blue); /* Royal Blue links */
+        }
+
+        /* Large Headline Hero */
+        .editorial-hero {
+            padding: 120px 5%;
+            display: grid;
+            grid-template-columns: 1.2fr 1fr;
+            gap: 60px;
+            align-items: center;
+            border-bottom: 1px solid #eee;
+            background-color: #fbfbfb; /* Very faint contrast background */
+        }
+
+        .editorial-hero h1 {
+            font-family: var(--serif);
+            font-size: clamp(3.5rem, 8vw, 6rem);
+            line-height: 1.0;
+            color: var(--royal-blue); /* Royal Blue Headline */
+        }
+
+        .editorial-hero p {
+            font-size: 1.4rem;
+            color: #555;
+            font-weight: 300;
+            border-left: 4px solid var(--gold); /* Gold accent border */
+            padding-left: 30px;
+        }
+
+        /* Roadmap Grid (Asymmetrical) */
+        .roadmap-container {
+            padding: 100px 5%;
+        }
+
+        .section-header {
+            font-family: var(--serif);
+            font-size: 3rem;
+            margin-bottom: 60px;
+            text-align: right;
+            border-top: 1px solid #eee;
+            padding-top: 20px;
+            color: var(--royal-blue); /* Royal Blue Section Title */
+        }
+
+        .milestone-feature {
+            display: grid;
+            grid-template-columns: 1fr 2fr;
+            gap: 50px;
+            margin-bottom: 100px;
             align-items: center;
         }
 
-        .container {
-            max-width: 900px;
-            width: 90%;
-            padding: 60px 20px;
-            text-align: center;
+        .milestone-feature:nth-child(even) {
+            grid-template-columns: 2fr 1fr;
         }
 
-        /* Logo Branding */
-        .logo-box {
-            margin-bottom: 30px;
-        }
-
-        .logo-img {
-            max-width: 250px;
-            height: auto;
-            filter: drop-shadow(0 10px 20px rgba(0,0,0,0.2));
-            border-radius: 15px;
-        }
-
-        h1 {
-            font-size: 2.8rem;
-            margin: 10px 0 0 0;
-            color: var(--gold);
-            font-weight: 800;
-            letter-spacing: -1px;
-        }
-
-        .tagline {
-            font-size: 1.4rem;
-            color: var(--white);
-            letter-spacing: 2px;
-            margin-top: 5px;
-            font-weight: 600;
-            opacity: 0.9;
-        }
-
-        /* Content Section */
-        .main-card {
-            background: rgba(255, 255, 255, 0.08);
-            backdrop-filter: blur(12px);
-            border: 1px solid rgba(255, 255, 255, 0.15);
-            padding: 40px;
-            border-radius: 24px;
-            margin: 40px 0;
-            box-shadow: 0 20px 40px rgba(0,0,0,0.25);
-        }
-
-        p {
-            line-height: 1.8;
-            font-size: 1.15rem;
-            color: var(--white);
-        }
-
-        .highlight-gold {
-            color: var(--gold);
-            font-weight: 700;
-        }
-
-        /* Language Badges */
-        .lang-container {
+        .milestone-details {
             display: flex;
-            justify-content: center;
-            gap: 12px;
-            margin: 20px 0;
+            flex-direction: column;
+            gap: 15px;
         }
 
-        .lang-tag {
-            border: 2px solid var(--white);
-            padding: 6px 18px;
-            border-radius: 8px;
+        .m-category {
             font-weight: 700;
-            font-size: 0.9rem;
             text-transform: uppercase;
-        }
-
-        /* Action Button */
-        .btn-gold {
+            letter-spacing: 2px;
+            font-size: 0.8rem;
+            color: #fff; /* White text on category */
+            background-color: var(--royal-blue); /* Royal Blue category background */
+            padding: 5px 15px;
             display: inline-block;
-            background: var(--gold);
-            color: var(--dark-blue);
-            padding: 18px 45px;
-            border-radius: 12px;
-            text-decoration: none;
-            font-weight: 800;
-            font-size: 1.1rem;
-            transition: all 0.3s ease;
-            margin-top: 25px;
-            box-shadow: 0 4px 15px rgba(255, 204, 0, 0.3);
+            margin-bottom: 10px;
         }
 
-        .btn-gold:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 8px 25px rgba(255, 204, 0, 0.5);
-            background: var(--white);
+        .m-headline {
+            font-family: var(--serif);
+            font-size: 2.5rem;
+            line-height: 1.1;
+            color: var(--text); /* Keep headline dark */
         }
 
+        .timeline-list {
+            list-style: none;
+            margin-top: 20px;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .timeline-list li {
+            display: flex;
+            gap: 20px;
+            padding: 10px 0;
+            border-bottom: 1px solid #eee;
+        }
+
+        .t-year { font-weight: 700; color: var(--royal-blue); min-width: 60px; } /* Royal Blue Years */
+
+        /* Special highlight for the Hired milestone */
+        .hired-highlight {
+            color: var(--gold); /* Gold color for text */
+            font-weight: 700;
+        }
+
+        /* Journal/Blog Section */
+        .journal-section {
+            background-color: #f9f9f9;
+            padding: 100px 5%;
+        }
+
+        .journal-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 30px;
+        }
+
+        .journal-card {
+            background: #fff;
+            border: 1px solid #eee;
+            padding: 30px;
+            transition: 0.3s;
+            border-top: 3px solid var(--gold); /* Gold accent top border */
+        }
+
+        .journal-card:hover { 
+            transform: translateY(-5px); 
+            box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+            border-top-color: var(--royal-blue); /* Switches to Royal Blue on hover */
+        }
+
+        .j-meta {
+            font-size: 0.8rem;
+            color: var(--gold); /* Gold meta data */
+            font-weight: 600;
+            text-transform: uppercase;
+            margin-bottom: 15px;
+            display: block;
+        }
+
+        .journal-card h4 {
+            color: var(--royal-blue); /* Royal Blue post titles */
+        }
+
+        /* Footer */
         footer {
-            margin-top: auto;
-            padding: 40px;
-            font-size: 0.85rem;
-            opacity: 0.6;
+            padding: 80px 5% 30px;
+            background-color: var(--royal-blue); /* Royal Blue Footer Background */
+            color: #fff; /* White text in footer */
+            text-align: center;
+            border-top: 4px solid var(--gold); /* Gold top border */
         }
 
-        /* Visual accent - Pink Gradient Blur */
-        .glow {
-            position: absolute;
-            width: 300px;
-            height: 300px;
-            background: var(--soft-pink);
-            filter: blur(150px);
-            opacity: 0.1;
-            z-index: -1;
-            top: 10%;
-            left: 10%;
-        }
+        .footer-logo-mag { height: 40px; margin-bottom: 30px; filter: brightness(0) invert(1); } /* Make logo white */
 
+        @media (max-width: 768px) {
+            .editorial-hero { grid-template-columns: 1fr; text-align: center; }
+            .milestone-feature, .milestone-feature:nth-child(even) { grid-template-columns: 1fr; }
+            .journal-grid { grid-template-columns: 1fr; }
+            .editorial-hero p { border-left: none; border-top: 4px solid var(--gold); padding-left: 0; padding-top: 20px; }
+        }
     </style>
 </head>
 <body>
-    <div class="glow"></div>
 
-    <div class="container">
-        <div class="logo-box">
-            <img src="multi-learner-01.png" alt="multi-learner logo" class="logo-img">
-            <div class="tagline">cn.th.en</div>
+    <header class="magazine-nav">
+        <div class="header-top">
+            <img src="multi-learner-16.png" alt="Logo" class="logo-magazine">
+            <div class="header-links">
+                <a href="#roadmap">ROADMAP</a>
+                <a href="#journal">JOURNAL</a>
+                <a href="#contact">CURRICULUM</a>
+            </div>
         </div>
+    </header>
 
-        <div class="lang-container">
-            <div class="lang-tag">Chinese</div>
-            <div class="lang-tag">Thai</div>
-            <div class="lang-tag">English</div>
+    <section class="editorial-hero">
+        <div>
+            <h1>Brave Language<br>Learning.</h1>
+       
         </div>
-
-        <div class="main-card">
-            <p>
-                Welcome to the future of situational learning. I am documenting my path from 
-                <span class="highlight-gold">intermediate fluency</span> to professional education.
-            </p>
-            <p>
-                This year is about gathering an audience and building the foundation for a 
-                <span class="highlight-gold">new kind of language school</span>. I'm stepping out from behind the notes 
-                to show that real learning is about progress, not perfection.
-            </p>
-            
-            <a href="#" class="btn-gold">Join the School Community</a>
+        <div>
+            <p>From studying Chinese in 2021 to working in a Thai company by 2025. This is the roadmap of a multi-learner.</p>
+      
         </div>
+    </section>
 
-        <p style="font-size: 0.9rem; opacity: 0.8;">
-            "Be brave. Face the world. Master the language."
-        </p>
+    <div class="roadmap-container" id="roadmap">
+        <h2 class="section-header">THE CHRONOLOGY</h2>
+
+        <article class="milestone-feature">
+            <div>
+                <span class="m-category">CHINESE 中文</span>
+                <h3 class="m-headline">HSK 6 Lower Mastery: A Long-Term Focus</h3>
+            </div>
+            <div class="milestone-details">
+                <ul class="timeline-list">
+                    <li><span class="t-year">2021</span><span class="t-desc">Began formal study cycle</span></li>
+                    <li><span class="t-year">2022</span><span class="t-desc">Passed HSK 2 Certification</span></li>
+                    <li><span class="t-year">2023</span><span class="t-desc">Passed HSK 3 Certification</span></li>
+                    <li><span class="t-year">2024+</span><span class="t-desc">Active Focus on HSK 6</span></li>
+                </ul>
+            </div>
+        </article>
+
+        <article class="milestone-feature">
+            <div class="milestone-details">
+                <ul class="timeline-list">
+                    <li><span class="t-year">2023</span><span class="t-desc">Achieved Basic Communication</span></li>
+                    <li><span class="t-year">2024</span><span class="t-desc">Reading Mastery & Fluency Growth</span></li>
+                    <li><span class="t-year">2025</span><span class="t-desc hired-highlight">HIRED BY THAI COMPANY</span></li>
+                    <li><span class="t-year">2026</span><span class="t-desc">Advanced Improvement & Corporate Thai</span></li>
+                </ul>
+            </div>
+            <div>
+                <span class="m-category">THAI ภาษาไทย</span>
+                <h3 class="m-headline">Leveraging Fluency: Hired in Bangkok</h3>
+            </div>
+        </article>
+
+        <article class="milestone-feature">
+            <div>
+                <span class="m-category">ENGLISH+ GLOBAL</span>
+                <h3 class="m-headline">International Access & Future Korean</h3>
+            </div>
+            <div class="milestone-details">
+                <ul class="timeline-list">
+                    <li><span class="t-year">2022</span><span class="t-desc">IELTS Band 7.0 Achievement</span></li>
+                    <li><span class="t-year">2026</span><span class="t-desc">Started Korean studies cycle</span></li>
+                    <li><span class="t-year">Future</span><span class="t-desc">School Curriculum Launch</span></li>
+                </ul>
+            </div>
+        </article>
     </div>
 
+    <section class="journal-section" id="journal">
+        <div class="container">
+            <h2 class="section-header" style="text-align: left; border-top:none;">THE FIELD JOURNAL</h2>
+            <div class="journal-grid">
+                <article class="journal-card">
+                    <span class="j-meta">CN • 2024</span>
+                    <h4>HSK 6 Character Repetition Strategies</h4>
+                </article>
+                <article class="journal-card">
+                    <span class="j-meta">TH • 2025</span>
+                    <h4>Corporate Culture: The Thai Office</h4>
+                </article>
+                <article class="journal-card">
+                    <span class="j-meta">METHOD • 2026</span>
+                    <h4>The Tri-Lingual Advantage: Structuring Korean</h4>
+                </article>
+            </div>
+        </div>
+    </section>
+
     <footer>
-        &copy; 2026 multi-learner school | Empowering Trilingual Learners
+        <img src="multi-learner-15.png" alt="Footer Logo" class="footer-logo-mag">
+        <p style="text-transform: uppercase; font-size: 0.8rem; letter-spacing: 2px;">Multi-Learner Platform © 2026</p>
     </footer>
 
     <script>
-        console.log("Brand colors applied: Royal Blue, Gold, and White.");
+        // Simple Intersection Observer for Fade-In Effect
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        });
+
+        // Initialize elements
+        document.querySelectorAll('.milestone-feature, .journal-card').forEach(el => {
+            el.style.opacity = '0';
+            el.style.transform = 'translateY(20px)';
+            el.style.transition = 'all 0.6s ease-out';
+            observer.observe(el);
+        });
     </script>
 </body>
 </html>
