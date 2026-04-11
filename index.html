@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>VibeLingo | Local Storage Edition</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;500;700&display=swap" rel="stylesheet">
+    
+    <style>
+        :root {
+            --bg-gradient: linear-gradient(135deg, #0f0c29, #302b63, #24243e);
+            --accent-pink: #ff0080;
+            --accent-blue: #00d2ff;
+            --glass-bg: rgba(255, 255, 255, 0.05);
+            --glass-border: rgba(255, 255, 255, 0.1);
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Inter', sans-serif; }
+
+        body {
+            background: var(--bg-gradient);
+            background-attachment: fixed;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            color: white;
+            padding: 20px;
+        }
+
+        .glow {
+            position: absolute;
+            width: 400px;
+            height: 400px;
+            background: var(--accent-pink);
+            filter: blur(150px);
+            border-radius: 50%;
+            z-index: -1;
+            opacity: 0.2;
+        }
+
+        /* Main Card */
+        .card {
+            background: var(--glass-bg);
+            backdrop-filter: blur(20px);
+            border: 1px solid var(--glass-border);
+            border-radius: 24px;
+            padding: 3rem;
+            width: 100%;
+            max-width: 500px;
+            text-align: center;
+            box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
+        }
+
+        .label { text-transform: uppercase; letter-spacing: 2px; font-size: 0.7rem; color: var(--accent-blue); font-weight: 700; margin-bottom: 1rem; display: block; }
+        h1 { font-size: 3rem; margin-bottom: 0.5rem; background: linear-gradient(to right, #fff, var(--accent-pink)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+        .pinyin { font-size: 1.1rem; color: rgba(255, 255, 255, 0.5); margin-bottom: 1.5rem; }
+        .meaning { font-size: 1.3rem; font-weight: 300; }
+
+        /* Teacher Mode - Input Area */
+        .admin-panel {
+            margin-top: 2rem;
+            background: rgba(0, 0, 0, 0.2);
+            padding: 1.5rem;
+            border-radius: 15px;
+            width: 100%;
+            max-width: 500px;
+        }
+
+        input {
+            width: 100%;
+            padding: 10px;
+            margin: 5px 0;
+            background: rgba(255, 255, 255, 0.1);
+            border: 1px solid var(--glass-border);
+            border-radius: 8px;
+            color: white;
+        }
+
+        .btn {
+            margin-top: 1rem;
+            background: transparent;
+            border: 1px solid var(--accent-pink);
+            color: white;
+            padding: 10px 20px;
+            border-radius: 50px;
+            cursor: pointer;
+            width: 100%;
+            transition: 0.3s;
+        }
+
+        .btn:hover { background: var(--accent-pink); }
+        .secondary-btn { border-color: var(--accent-blue); margin-top: 10px; }
+        .secondary-btn:hover { background: var(--accent-blue); }
+    </style>
+</head>
+<body>
+
+    <div class="glow"></div>
+
+    <main class="card" id="display-card">
+        <span class="label">Vocabulary Flashcard</span>
+        <h1 id="word-display">Add a word!</h1>
+        <p class="pinyin" id="phonetic-display">---</p>
+        <p class="meaning" id="definition-display">Use the form below to start your list.</p>
+        <button class="btn secondary-btn" onclick="showRandomWord()">Next Random Word</button>
+    </main>
+
+    <section class="admin-panel">
+        <span class="label" style="color: var(--accent-pink)">Designer/Teacher Tools</span>
+        <input type="text" id="input-word" placeholder="Word (e.g. 学习)">
+        <input type="text" id="input-phonetic" placeholder="Phonetic/Pinyin (e.g. xué xí)">
+        <input type="text" id="input-meaning" placeholder="Meaning (e.g. To learn)">
+        <button class="btn" onclick="saveWord()">Add to My List</button>
+        <button class="btn" style="border-color: grey; font-size: 10px;" onclick="clearList()">Clear All Data</button>
+    </section>
+
+    <script>
+        // 1. Get the list from Local Storage (or start empty)
+        let vocabList = JSON.parse(localStorage.getItem('myVocab')) || [];
+
+        function saveWord() {
+            const word = document.getElementById('input-word').value;
+            const phonetic = document.getElementById('input-phonetic').value;
+            const meaning = document.getElementById('input-meaning').value;
+
+            if(word && meaning) {
+                const newEntry = { word, phonetic, meaning };
+                vocabList.push(newEntry);
+                
+                // 2. Save to browser memory
+                localStorage.setItem('myVocab', JSON.stringify(vocabList));
+                
+                // Clear inputs
+                document.getElementById('input-word').value = '';
+                document.getElementById('input-phonetic').value = '';
+                document.getElementById('input-meaning').value = '';
+                
+                alert("Word saved locally!");
+                showRandomWord();
+            }
+        }
+
+        function showRandomWord() {
+            if (vocabList.length === 0) return;
+            
+            const randomIndex = Math.floor(Math.random() * vocabList.length);
+            const item = vocabList[randomIndex];
+
+            document.getElementById('word-display').innerText = item.word;
+            document.getElementById('phonetic-display').innerText = item.phonetic;
+            document.getElementById('definition-display').innerText = item.meaning;
+        }
+
+        function clearList() {
+            if(confirm("Delete all saved words?")) {
+                localStorage.removeItem('myVocab');
+                location.reload();
+            }
+        }
+
+        // Show a word immediately if list isn't empty
+        if(vocabList.length > 0) showRandomWord();
+    </script>
+</body>
+</html>
