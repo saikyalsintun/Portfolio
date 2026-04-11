@@ -3,27 +3,27 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>multi-learner | cn.th.en</title>
+    <title>multi-learner | Language School</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
     <style>
         :root {
-            --bg-gradient: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%);
-            --accent-purple: #4831d4;
-            --accent-pink: #ffafbd;
-            --text-white: #ffffff;
-            --text-dim: #b0b0b0;
-            --brand-yellow: #ffcc00;
+            /* Brand Colors */
+            --royal-blue: #3b42ae; /* Matches the logo background */
+            --dark-blue: #2a2f8a;
+            --gold: #ffcc00;       /* Matches the "multi-learner" text */
+            --white: #ffffff;
+            --soft-pink: #ffafbd;  /* Keeping your preferred accent for subtle glows */
         }
 
         body, html {
             margin: 0;
             padding: 0;
             font-family: 'Inter', sans-serif;
-            background: var(--bg-gradient);
+            background: linear-gradient(180deg, var(--royal-blue) 0%, var(--dark-blue) 100%);
             background-attachment: fixed;
-            color: var(--text-white);
+            color: var(--white);
             min-height: 100vh;
             display: flex;
             flex-direction: column;
@@ -31,146 +31,163 @@
         }
 
         .container {
-            max-width: 800px;
+            max-width: 900px;
             width: 90%;
             padding: 60px 20px;
             text-align: center;
         }
 
-        /* Logo Styling */
-        .logo-container {
-            margin-bottom: 40px;
+        /* Logo Branding */
+        .logo-box {
+            margin-bottom: 30px;
         }
-        
-        .logo-icon {
-            font-size: 60px;
-            margin-bottom: 10px;
-            display: inline-block;
+
+        .logo-img {
+            max-width: 250px;
+            height: auto;
+            filter: drop-shadow(0 10px 20px rgba(0,0,0,0.2));
+            border-radius: 15px;
         }
 
         h1 {
-            font-size: 2.5rem;
-            margin: 0;
-            color: var(--brand-yellow);
+            font-size: 2.8rem;
+            margin: 10px 0 0 0;
+            color: var(--gold);
+            font-weight: 800;
             letter-spacing: -1px;
         }
 
-        .subtitle {
-            font-size: 1.2rem;
-            color: var(--text-white);
-            opacity: 0.9;
+        .tagline {
+            font-size: 1.4rem;
+            color: var(--white);
+            letter-spacing: 2px;
             margin-top: 5px;
-            font-weight: bold;
+            font-weight: 600;
+            opacity: 0.9;
         }
 
-        /* Introduction Section */
-        .intro-box {
-            background: rgba(255, 255, 255, 0.05);
-            backdrop-filter: blur(10px);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            padding: 30px;
-            border-radius: 20px;
+        /* Content Section */
+        .main-card {
+            background: rgba(255, 255, 255, 0.08);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            padding: 40px;
+            border-radius: 24px;
             margin: 40px 0;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.25);
         }
 
         p {
             line-height: 1.8;
-            font-size: 1.1rem;
-            color: var(--text-dim);
+            font-size: 1.15rem;
+            color: var(--white);
         }
 
-        .highlight {
-            color: var(--accent-pink);
-            font-weight: bold;
-        }
-
-        /* Call to Action */
-        .cta-button {
-            display: inline-block;
-            background: var(--accent-pink);
-            color: #1a1a2e;
-            padding: 15px 40px;
-            border-radius: 50px;
-            text-decoration: none;
-            font-weight: bold;
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-            margin-top: 20px;
-        }
-
-        .cta-button:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 5px 20px rgba(255, 175, 189, 0.4);
+        .highlight-gold {
+            color: var(--gold);
+            font-weight: 700;
         }
 
         /* Language Badges */
-        .badges {
+        .lang-container {
             display: flex;
             justify-content: center;
-            gap: 15px;
-            margin-top: 20px;
+            gap: 12px;
+            margin: 20px 0;
         }
 
-        .badge {
-            background: rgba(72, 49, 212, 0.3);
-            border: 1px solid var(--accent-purple);
-            padding: 5px 15px;
-            border-radius: 5px;
+        .lang-tag {
+            border: 2px solid var(--white);
+            padding: 6px 18px;
+            border-radius: 8px;
+            font-weight: 700;
             font-size: 0.9rem;
             text-transform: uppercase;
+        }
+
+        /* Action Button */
+        .btn-gold {
+            display: inline-block;
+            background: var(--gold);
+            color: var(--dark-blue);
+            padding: 18px 45px;
+            border-radius: 12px;
+            text-decoration: none;
+            font-weight: 800;
+            font-size: 1.1rem;
+            transition: all 0.3s ease;
+            margin-top: 25px;
+            box-shadow: 0 4px 15px rgba(255, 204, 0, 0.3);
+        }
+
+        .btn-gold:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(255, 204, 0, 0.5);
+            background: var(--white);
         }
 
         footer {
             margin-top: auto;
             padding: 40px;
-            font-size: 0.8rem;
-            color: var(--text-dim);
+            font-size: 0.85rem;
+            opacity: 0.6;
+        }
+
+        /* Visual accent - Pink Gradient Blur */
+        .glow {
+            position: absolute;
+            width: 300px;
+            height: 300px;
+            background: var(--soft-pink);
+            filter: blur(150px);
+            opacity: 0.1;
+            z-index: -1;
+            top: 10%;
+            left: 10%;
         }
 
     </style>
 </head>
 <body>
+    <div class="glow"></div>
 
     <div class="container">
-        <div class="logo-container">
-            <div class="logo-icon">📖</div> <h1>multi-learner.</h1>
-            <div class="subtitle">cn.th.en</div>
+        <div class="logo-box">
+            <img src="multi-learner-01.png" alt="multi-learner logo" class="logo-img">
+            <div class="tagline">cn.th.en</div>
         </div>
 
-        <div class="badges">
-            <span class="badge">Chinese</span>
-            <span class="badge">Thai</span>
-            <span class="badge">English</span>
+        <div class="lang-container">
+            <div class="lang-tag">Chinese</div>
+            <div class="lang-tag">Thai</div>
+            <div class="lang-tag">English</div>
         </div>
 
-        <div class="intro-box">
+        <div class="main-card">
             <p>
-                Welcome! I am a language enthusiast currently navigating the bridge between 
-                <span class="highlight">upper-intermediate and advanced</span> mastery. 
-                I believe that you don't need to be a "perfect" native speaker to start sharing knowledge—you just need the courage to try.
+                Welcome to the future of situational learning. I am documenting my path from 
+                <span class="highlight-gold">intermediate fluency</span> to professional education.
             </p>
             <p>
-                This space documents my journey from a personal vlog to a 
-                <span class="highlight">full-scale language school</span>. I focus on situational, 
-                everyday vocabulary that moves beyond the textbooks.
+                This year is about gathering an audience and building the foundation for a 
+                <span class="highlight-gold">new kind of language school</span>. I'm stepping out from behind the notes 
+                to show that real learning is about progress, not perfection.
             </p>
             
-            <a href="#" class="cta-button">Subscribe to my Journey</a>
+            <a href="#" class="btn-gold">Join the School Community</a>
         </div>
 
-        <p style="font-style: italic; font-size: 0.9rem;">
-            "Be brave about showing your face, no matter what others say."
+        <p style="font-size: 0.9rem; opacity: 0.8;">
+            "Be brave. Face the world. Master the language."
         </p>
     </div>
 
     <footer>
-        &copy; 2026 multi-learner | Built for the global learner.
+        &copy; 2026 multi-learner school | Empowering Trilingual Learners
     </footer>
 
     <script>
-        // Future Logic: This is where you can connect your 
-        // Google Sheets Apps Script API later!
-        console.log("Multi-learner site initialized.");
+        console.log("Brand colors applied: Royal Blue, Gold, and White.");
     </script>
 </body>
 </html>
