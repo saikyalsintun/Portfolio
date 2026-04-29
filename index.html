@@ -8,20 +8,12 @@
     <style>
         /* --- CSS STYLES --- */
         :root {
-            --bg: #ffffff; /* Pure White */
+            --bg: #ffffff;
             --text: #1a1a1a;
-            
-            /* Core Theme Colors */
-            --royal-blue: #0047AB; /* Deep Royal Blue */
-            --gold: #C5A059;       /* Muted Gold */
-            --gold-light: #E5C78D; /* Lighter Gold for backgrounds */
-            
-            /* Color Mapping for Design Preservation */
-            --accent: var(--royal-blue); /* Editorial accent is now Royal Blue */
-            --cn: var(--royal-blue);     /* All languages unify under Royal Blue */
-            --th: var(--royal-blue);
-            --en: var(--royal-blue);
-            
+            --royal-blue: #0047AB;
+            --gold: #C5A059;
+            --gold-light: #E5C78D;
+            --accent: var(--royal-blue);
             --serif: 'DM Serif Display', serif;
             --sans: 'Public Sans', sans-serif;
         }
@@ -36,11 +28,11 @@
         }
 
         a { text-decoration: none; color: inherit; transition: 0.3s; }
-        a:hover { color: var(--gold); } /* Gold on hover */
+        a:hover { color: var(--gold); }
 
         /* Magazine Header */
         header.magazine-nav {
-            padding: 30px 5%;
+            padding: 20px 5%;
             border-bottom: 2px solid #eee;
             background: #fff;
             position: sticky;
@@ -52,177 +44,155 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
-            margin-bottom: 20px;
         }
 
         .logo-magazine { height: 45px; }
 
         .header-links {
             display: flex;
-            gap: 30px;
+            gap: 25px;
             font-weight: 600;
             text-transform: uppercase;
             letter-spacing: 1px;
-            font-size: 0.85rem;
-            color: var(--royal-blue); /* Royal Blue links */
+            font-size: 0.8rem;
+            color: var(--royal-blue);
         }
 
-        /* Large Headline Hero */
+        /* Hero */
         .editorial-hero {
-            padding: 120px 5%;
+            padding: 100px 5%;
             display: grid;
             grid-template-columns: 1.2fr 1fr;
             gap: 60px;
             align-items: center;
-            border-bottom: 1px solid #eee;
-            background-color: #fbfbfb; /* Very faint contrast background */
+            background-color: #fbfbfb;
         }
 
         .editorial-hero h1 {
             font-family: var(--serif);
-            font-size: clamp(3.5rem, 8vw, 6rem);
+            font-size: clamp(3rem, 7vw, 5.5rem);
             line-height: 1.0;
-            color: var(--royal-blue); /* Royal Blue Headline */
+            color: var(--royal-blue);
         }
 
         .editorial-hero p {
-            font-size: 1.4rem;
+            font-size: 1.3rem;
             color: #555;
-            font-weight: 300;
-            border-left: 4px solid var(--gold); /* Gold accent border */
+            border-left: 4px solid var(--gold);
             padding-left: 30px;
         }
 
-        /* Roadmap Grid (Asymmetrical) */
-        .roadmap-container {
-            padding: 100px 5%;
-        }
-
-        .section-header {
-            font-family: var(--serif);
-            font-size: 3rem;
-            margin-bottom: 60px;
-            text-align: right;
-            border-top: 1px solid #eee;
-            padding-top: 20px;
-            color: var(--royal-blue); /* Royal Blue Section Title */
-        }
-
-        .milestone-feature {
-            display: grid;
-            grid-template-columns: 1fr 2fr;
-            gap: 50px;
-            margin-bottom: 100px;
-            align-items: center;
-        }
-
-        .milestone-feature:nth-child(even) {
-            grid-template-columns: 2fr 1fr;
-        }
-
-        .milestone-details {
-            display: flex;
-            flex-direction: column;
-            gap: 15px;
-        }
-
-        .m-category {
-            font-weight: 700;
-            text-transform: uppercase;
-            letter-spacing: 2px;
-            font-size: 0.8rem;
-            color: #fff; /* White text on category */
-            background-color: var(--royal-blue); /* Royal Blue category background */
-            padding: 5px 15px;
-            display: inline-block;
-            margin-bottom: 10px;
-        }
-
-        .m-headline {
-            font-family: var(--serif);
-            font-size: 2.5rem;
-            line-height: 1.1;
-            color: var(--text); /* Keep headline dark */
-        }
-
-        .timeline-list {
-            list-style: none;
-            margin-top: 20px;
-            display: flex;
-            flex-direction: column;
-            gap: 10px;
-        }
-
-        .timeline-list li {
-            display: flex;
-            gap: 20px;
-            padding: 10px 0;
-            border-bottom: 1px solid #eee;
-        }
-
-        .t-year { font-weight: 700; color: var(--royal-blue); min-width: 60px; } /* Royal Blue Years */
-
-        /* Special highlight for the Hired milestone */
-        .hired-highlight {
-            color: var(--gold); /* Gold color for text */
-            font-weight: 700;
-        }
-
-        /* Journal/Blog Section */
-        .journal-section {
-            background-color: #f9f9f9;
-            padding: 100px 5%;
-        }
-
-        .journal-grid {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 30px;
-        }
-
-        .journal-card {
+        /* Pricing & Courses Section */
+        .courses-section {
+            padding: 80px 5%;
             background: #fff;
+        }
+
+        .course-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 40px;
+            margin-top: 40px;
+        }
+
+        .course-card {
             border: 1px solid #eee;
-            padding: 30px;
-            transition: 0.3s;
-            border-top: 3px solid var(--gold); /* Gold accent top border */
+            padding: 0;
+            border-radius: 4px;
+            overflow: hidden;
         }
 
-        .journal-card:hover { 
-            transform: translateY(-5px); 
-            box-shadow: 0 10px 30px rgba(0,0,0,0.05);
-            border-top-color: var(--royal-blue); /* Switches to Royal Blue on hover */
+        .course-card h3 {
+            background: var(--royal-blue);
+            color: #fff;
+            padding: 15px;
+            font-family: var(--serif);
+            font-size: 1.5rem;
         }
 
-        .j-meta {
+        .course-table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        .course-table td {
+            padding: 12px 15px;
+            border-bottom: 1px solid #f0f0f0;
+            font-size: 0.9rem;
+        }
+
+        .course-table td:last-child {
+            text-align: right;
+            font-weight: 700;
+            color: var(--royal-blue);
+        }
+
+        .price-note {
+            padding: 15px;
             font-size: 0.8rem;
-            color: var(--gold); /* Gold meta data */
-            font-weight: 600;
-            text-transform: uppercase;
-            margin-bottom: 15px;
-            display: block;
+            font-style: italic;
+            color: #777;
         }
 
-        .journal-card h4 {
-            color: var(--royal-blue); /* Royal Blue post titles */
+        /* Speaking CTA Section */
+        .speaking-cta {
+            background: var(--royal-blue);
+            color: #fff;
+            padding: 60px 5%;
+            display: flex;
+            align-items: center;
+            justify-content: space-around;
+            flex-wrap: wrap;
+            gap: 40px;
         }
 
-        /* Footer */
-        footer {
-            padding: 80px 5% 30px;
-            background-color: var(--royal-blue); /* Royal Blue Footer Background */
-            color: #fff; /* White text in footer */
+        .speaking-text { max-width: 500px; }
+        .speaking-text h2 { font-family: var(--serif); font-size: 2.5rem; margin-bottom: 20px; }
+        
+        .qr-container {
+            background: #fff;
+            padding: 20px;
+            border-radius: 10px;
             text-align: center;
-            border-top: 4px solid var(--gold); /* Gold top border */
+            color: var(--text);
         }
 
-        .footer-logo-mag { height: 40px; margin-bottom: 30px; filter: brightness(0) invert(1); } /* Make logo white */
+        .qr-container img { width: 180px; height: 180px; display: block; margin-bottom: 10px; }
+
+        .btn-gold {
+            display: inline-block;
+            background: var(--gold);
+            color: #fff;
+            padding: 12px 25px;
+            font-weight: 700;
+            text-transform: uppercase;
+            margin-top: 20px;
+            border-radius: 4px;
+        }
+
+        /* Roadmap & Journal Styles (Kept from original) */
+        .roadmap-container { padding: 80px 5%; }
+        .section-header { font-family: var(--serif); font-size: 2.5rem; margin-bottom: 50px; color: var(--royal-blue); border-top: 1px solid #eee; padding-top: 20px; }
+        .milestone-feature { display: grid; grid-template-columns: 1fr 2fr; gap: 50px; margin-bottom: 80px; align-items: center; }
+        .m-category { font-weight: 700; text-transform: uppercase; letter-spacing: 2px; font-size: 0.8rem; color: #fff; background-color: var(--royal-blue); padding: 5px 15px; display: inline-block; margin-bottom: 10px; }
+        .m-headline { font-family: var(--serif); font-size: 2.2rem; line-height: 1.1; }
+        .timeline-list { list-style: none; margin-top: 20px; }
+        .timeline-list li { display: flex; gap: 20px; padding: 8px 0; border-bottom: 1px solid #eee; }
+        .t-year { font-weight: 700; color: var(--royal-blue); min-width: 60px; }
+        .hired-highlight { color: var(--gold); font-weight: 700; }
+
+        .journal-section { background-color: #f9f9f9; padding: 80px 5%; }
+        .journal-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 30px; }
+        .journal-card { background: #fff; border: 1px solid #eee; padding: 30px; border-top: 3px solid var(--gold); transition: 0.3s; }
+        .journal-card:hover { transform: translateY(-5px); border-top-color: var(--royal-blue); }
+
+        footer { padding: 60px 5% 30px; background-color: var(--royal-blue); color: #fff; text-align: center; border-top: 4px solid var(--gold); }
+        .footer-logo-mag { height: 40px; margin-bottom: 20px; filter: brightness(0) invert(1); }
 
         @media (max-width: 768px) {
-            .editorial-hero { grid-template-columns: 1fr; text-align: center; }
-            .milestone-feature, .milestone-feature:nth-child(even) { grid-template-columns: 1fr; }
-            .journal-grid { grid-template-columns: 1fr; }
-            .editorial-hero p { border-left: none; border-top: 4px solid var(--gold); padding-left: 0; padding-top: 20px; }
+            .editorial-hero, .milestone-feature, .journal-grid, .speaking-cta { grid-template-columns: 1fr; text-align: center; }
+            .header-links { display: none; }
+            .editorial-hero p { border-left: none; border-top: 4px solid var(--gold); padding-top: 20px; }
         }
     </style>
 </head>
@@ -232,19 +202,77 @@
         <div class="header-top">
             <img src="multi-learner-16.png" alt="Logo" class="logo-magazine">
             <div class="header-links">
-          
+                <a href="#roadmap">Roadmap</a>
+                <a href="#courses">Courses</a>
+                <a href="#speaking">Speaking Session</a>
+       
             </div>
         </div>
     </header>
 
     <section class="editorial-hero">
         <div>
-            <h1>Brave Language<br>Learning.</h1>
-       
+            <h1>Brave Language Learning.</h1>
         </div>
         <div>
-            <p>From studying Chinese in 2021 to working in a Thai company by 2025. This is the roadmap of a multi-learner.</p>
-      
+            <p>From studying Chinese in 2021 to working in a Thai company by 2025. This is the roadmap and curriculum of a multi-learner.</p>
+        </div>
+    </section>
+
+    <section class="speaking-cta" id="speaking">
+        <div class="speaking-text">
+            <span class="m-category" style="background: var(--gold);">Special Offer</span>
+            <h2>Free Speaking Session</h2>
+            <p>Ready to break the silence? Join our free speaking session to practice your target language in a supportive environment. Individual sessions also available at 15,000 MMK / 100 THB.</p>
+            <a href="https://docs.google.com/forms/d/e/1FAIpQLSdNeGB5smzShaeXk4JedwXEPjsCYrZEnaGqxeU-R1XafaJQ3Q/viewform?usp=dialog" class="btn-gold" target="_blank">Register Now</a>
+        </div>
+        <div class="qr-container">
+            <img src="Free_Speaking.png" alt="QR Code for Speaking Form">
+            <p><strong>Scan to Enroll</strong></p>
+        </div>
+    </section>
+
+    <section class="courses-section" id="courses">
+        <h2 class="section-header" style="text-align: left;">COURSE CURRICULUM</h2>
+        <div class="course-grid">
+            
+            <div class="course-card">
+                <h3>Chinese Language</h3>
+                <table class="course-table">
+                    <tr><td>Basic (Pinyin)</td><td>70,000 MMK</td></tr>
+                    <tr><td>HSK 1</td><td>100,000 MMK</td></tr>
+                    <tr><td>HSK 2</td><td>130,000 MMK</td></tr>
+                    <tr><td>HSK 3</td><td>200,000 MMK</td></tr>
+                    <tr><td>HSK 4</td><td>230,000 MMK</td></tr>
+                    <tr><td>HSK 5</td><td>300,000 MMK</td></tr>
+                    <tr><td>Speaking Basic</td><td>100,000 MMK</td></tr>
+                    <tr><td>Topic Based Speaking</td><td>150,000 MMK</td></tr>
+                </table>
+                <p class="price-note">Individual & Group Courses Available</p>
+            </div>
+
+            <div class="course-card">
+                <h3>Thai Language</h3>
+                <table class="course-table">
+                    <tr><td>Basic</td><td>100,000 MMK</td></tr>
+                    <tr><td>Lower Intermediate (L1)</td><td>150,000 MMK</td></tr>
+                    <tr><td>Intermediate (L2)</td><td>200,000 MMK</td></tr>
+                    <tr><td>Upper Intermediate (L3)</td><td>220,000 MMK</td></tr>
+                    <tr><td>Speaking Basic</td><td>100,000 MMK</td></tr>
+                    <tr><td>Speaking Topic Based</td><td>200,000 MMK</td></tr>
+                </table>
+                <p class="price-note">Duration: Full course structure completion</p>
+            </div>
+
+            <div class="course-card">
+                <h3>English (Individual)</h3>
+                <table class="course-table">
+                    <tr><td>IELTS Foundation</td><td>250,000 MMK</td></tr>
+                    <tr><td>IELTS Preparation</td><td>300,000 MMK</td></tr>
+                </table>
+                <p class="price-note">Focused 1-on-1 coaching for exam success.</p>
+                <div style="padding:15px;"><img src="Post1.png" alt="Pricing" style="width:100%; border-radius:4px;"></div>
+            </div>
         </div>
     </section>
 
@@ -280,38 +308,14 @@
                 <h3 class="m-headline">Leveraging Fluency: Hired in Bangkok</h3>
             </div>
         </article>
-
-        <article class="milestone-feature">
-            <div>
-                <span class="m-category">ENGLISH+ GLOBAL</span>
-                <h3 class="m-headline">International Access & Future Korean</h3>
-            </div>
-            <div class="milestone-details">
-                <ul class="timeline-list">
-                    <li><span class="t-year">2022</span><span class="t-desc">IELTS Band 7.0 Achievement</span></li>
-                    <li><span class="t-year">2026</span><span class="t-desc">Started Korean studies cycle</span></li>
-                    <li><span class="t-year">Future</span><span class="t-desc">School Curriculum Launch</span></li>
-                </ul>
-            </div>
-        </article>
     </div>
 
     <section class="journal-section" id="journal">
         <div class="container">
             <h2 class="section-header" style="text-align: left; border-top:none;">THE FIELD JOURNAL</h2>
-            <div class="journal-grid">
-                <article class="journal-card">
-                    <span class="j-meta">CN • 2024</span>
-                    <h4>HSK 6 Character Repetition Strategies</h4>
-                </article>
-                <article class="journal-card">
-                    <span class="j-meta">TH • 2025</span>
-                    <h4>Corporate Culture: The Thai Office</h4>
-                </article>
-                <article class="journal-card">
-                    <span class="j-meta">METHOD • 2026</span>
-                    <h4>The Tri-Lingual Advantage: Structuring Korean</h4>
-                </article>
+            
+            <div style="margin-top: 40px; text-align: center;">
+                <img src="Post2.png" alt="Teaching Journey" style="max-width: 100%; height: auto; border: 10px solid #fff; box-shadow: 0 10px 30px rgba(0,0,0,0.1);">
             </div>
         </div>
     </section>
@@ -322,7 +326,6 @@
     </footer>
 
     <script>
-        // Simple Intersection Observer for Fade-In Effect
         const observer = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
                 if (entry.isIntersecting) {
@@ -332,8 +335,7 @@
             });
         });
 
-        // Initialize elements
-        document.querySelectorAll('.milestone-feature, .journal-card').forEach(el => {
+        document.querySelectorAll('.milestone-feature, .journal-card, .course-card').forEach(el => {
             el.style.opacity = '0';
             el.style.transform = 'translateY(20px)';
             el.style.transition = 'all 0.6s ease-out';
